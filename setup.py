@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="onnxruntime_transformers",
-    version="0.1.1",
+    version="0.1.2",
     author="chuboy",
     author_email="billju666@gmail.com",
     description="transformers for production runtime, 3x faster on cpu, no pytorch nor tensorflow included",

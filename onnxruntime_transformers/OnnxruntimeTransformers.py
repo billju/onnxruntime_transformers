@@ -3,7 +3,6 @@ import numpy as np
 from onnxruntime import InferenceSession
 from tokenizers import Tokenizer
 
-
 class OnnxruntimeTransformers:
     def __init__(self, tokenizer_json: str, model_onnx: str):
         self.tokenizer: Tokenizer = Tokenizer.from_file(tokenizer_json)
