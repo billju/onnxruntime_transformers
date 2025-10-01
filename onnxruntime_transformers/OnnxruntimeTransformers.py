@@ -36,13 +36,7 @@ class OnnxruntimeTransformers:
 
     def encode(self, sentences: List[str]) -> np.array:
         inputs = self.tokenize(sentences)
-        token_embeddings = self.session.run(["token_embeddings"], inputs)[0]
-        mask_expanded = np.broadcast_to(
-            np.expand_dims(inputs["attention_mask"], axis=-1), token_embeddings.shape
-        )
-        return np.sum(token_embeddings * mask_expanded, axis=1) / np.clip(
-            np.sum(mask_expanded, axis=1), a_min=1e-9, a_max=None
-        )
+        return self.session.run(['sentence_embedding'], inputs)[0]
 
     def forward(self, sentences: List[str]) -> np.array:
         logit = self.session.run(["logits"], self.tokenize(sentences))[0]
